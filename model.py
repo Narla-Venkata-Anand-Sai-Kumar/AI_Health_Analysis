@@ -31,7 +31,7 @@ def classify(img):
 
 def bone_net(img):
     img = cv2.resize(img,(224,224))
-    model = tf.keras.models.load_model("Fracture_detection.h5",compile=False)
+    model = tf.keras.models.load_model("Fracture.h5",compile=False)
     result = model.predict(np.array([img]))
     op=""
     if result[0]<0.5:
@@ -51,7 +51,7 @@ def brain_net(img):
 def chest_net(img):
     lt = ['PNEUMONIA', 'NORMAL']
     img = cv2.resize(img,(224,224))
-    model = tf.keras.models.load_model("chest_cls_model.h5",compile=False)
+    model = tf.keras.models.load_model("chest.h5",compile=False)
     result = model.predict(np.array([img]))
     ans = np.argmax(result)
     return lt[ans]
@@ -59,7 +59,7 @@ def chest_net(img):
 def Eye_net(img):
     lt = ['glaucoma', 'normal', 'diabetic_retinopathy', 'cataract']
     img = cv2.resize(img,(224,224))
-    model = tf.keras.models.load_model("Eye_diseases.h5",compile=False)
+    model = tf.keras.models.load_model("eye.h5",compile=False)
     result = model.predict(np.array([img]))
     ans = np.argmax(result)
     return lt[ans]
@@ -67,7 +67,7 @@ def Eye_net(img):
 def kidney_net(img):
     lt = ['Cyst', 'Tumor', 'Stone', 'Normal']
     img = cv2.resize(img,(224,224))
-    model = tf.keras.models.load_model("kidney_stone.h5",compile=False)
+    model = tf.keras.models.load_model("kidney.h5",compile=False)
     result = model.predict(np.array([img]))
     ans = np.argmax(result)
     return lt[ans]
@@ -75,7 +75,7 @@ def kidney_net(img):
 def skin_net(img):
     lt = ['pigmented benign keratosis', 'melanoma', 'vascular lesion', 'actinic keratosis', 'squamous cell carcinoma', 'basal cell carcinoma', 'seborrheic keratosis', 'dermatofibroma', 'nevus']
     img = cv2.resize(img,(224,224))
-    model = tf.keras.models.load_model("skin_cancer.h5",compile=False)
+    model = tf.keras.models.load_model("skin.h5",compile=False)
     result = model.predict(np.array([img]))
     ans = np.argmax(result)
     return lt[ans]
