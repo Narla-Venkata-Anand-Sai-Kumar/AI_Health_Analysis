@@ -75,7 +75,7 @@ def kidney_net(img):
 def skin_net(img):
     lt = ['pigmented benign keratosis', 'melanoma', 'vascular lesion', 'actinic keratosis', 'squamous cell carcinoma', 'basal cell carcinoma', 'seborrheic keratosis', 'dermatofibroma', 'nevus']
     img = cv2.resize(img,(224,224))
-    model = tf.keras.models.load_model("skin.h5",compile=False)
+    model = tf.keras.models.load_model("skin_cancer.h5",compile=False)
     result = model.predict(np.array([img]))
     ans = np.argmax(result)
     return lt[ans]
