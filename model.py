@@ -42,7 +42,7 @@ def bone_net(img):
 
 def brain_net(img):
     lt = ['pituitary', 'notumor', 'meningioma', 'glioma']
-    img = cv2.resize(img,(224,224))
+    img = cv2.resize(img,(52,52))
     model = tf.keras.models.load_model("brain.h5",compile=False)
     result = model.predict(np.array([img]))
     ans = np.argmax(result)
