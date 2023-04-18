@@ -31,14 +31,12 @@ def classify(img):
 
 def bone_net(img):
     # img = cv2.resize(img,(224,224))
+    lt = ['not fractured', 'fractured']
     model = tf.keras.models.load_model("fracture.h5",compile=False)
     result = model.predict(np.array([img]))
-    op=""
-    if result[0]<0.5:
-        op="Fracture"   
-    else:
-        op="Normal"
-    return op
+    result = model.predict(np.array([img]))
+    ans = np.argmax(result)
+    return lt[ans]
 
 def brain_net(img):
     lt = ['pituitary', 'notumor', 'meningioma', 'glioma']
